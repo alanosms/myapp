@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import axios from "axios";
+import {postProduct} from '../ConnectAPI'
 import { View, TextInput, Button, StyleSheet } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 const ProductForm = () => {
+  const navigation = useNavigation();
   const [product, setProduct] = useState({
     name: "",
     description: "",
@@ -18,17 +20,6 @@ const ProductForm = () => {
     setProduct({ name: "", description: "", amount: "", urlImage: "" });
   };
 
-  const postProduct = async (product) => {
-    try {
-      const response = await axios.post(
-        "http://192.168.0.150:3030/products/",
-        product
-      );
-      alert("Produto Criado com sucesso!");
-    } catch (error) {
-      console.error(error);
-    }
-  };
   return (
     <View style={styles.formContainer}>
       <TextInput
@@ -67,9 +58,9 @@ const ProductForm = () => {
           ) {
             alert("Algum valor está vazio, verique");
           } else {
-            console.log(product);
             postProduct(product);
             resetForm();
+            navigation.navigate('Estoque');
           }
         }}
       />

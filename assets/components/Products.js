@@ -10,6 +10,7 @@ import styles from "./css/styles";
 import { React, useState, useEffect } from "react";
 import ModalComponent from "./EditProduct";
 import axios from "axios";
+import { useIsFocused } from "@react-navigation/native";
 
 const ENDPOINT_API = "http://192.168.0.150:3030/products/";
 
@@ -20,16 +21,21 @@ const Item = ({ name, amount }) => (
   </View>
 );
 
-const Products = ({ term }) => {
+export const Products = ({ term }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [refreshing, setRefreshing] = useState(false);
 
   const [filteredData, setFilteredData] = useState([]);
-  
+
   const [error, setError] = useState(null);
 
   const [data, setData] = useState([]);
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    if (isFocused) handleRefresh();
+  }, [isFocused]);
 
   const fetchData = async () => {
     try {
@@ -37,7 +43,7 @@ const Products = ({ term }) => {
       setData(response.data);
       setFilteredData(
         term.length > 0
-          ? response.data.filter(item => item.name.includes(term))
+          ? response.data.filter((item) => item.name.includes(term))
           : response.data
       );
     } catch (error) {
@@ -56,7 +62,7 @@ const Products = ({ term }) => {
   return (
     <>
       <FlatList
-      keyExtractor={item => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         data={filteredData}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
@@ -82,7 +88,7 @@ const Products = ({ term }) => {
                   setSelectedProduct(item);
                   setModalVisible(true);
                 }}
-            >
+              >
                 <Text>Editar</Text>
               </TouchableOpacity>
             </View>
@@ -97,5 +103,3 @@ const Products = ({ term }) => {
     </>
   );
 };
-
-export default Products;

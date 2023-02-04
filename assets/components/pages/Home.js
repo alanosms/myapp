@@ -1,7 +1,7 @@
 // Screen.js
 import React, { useState } from 'react';
 import { View } from 'react-native';
-import Products from '../Products';
+import {Products} from '../Products';
 import SearchBar from '../Search';
 
 const HomeScreen = () => {
@@ -17,7 +17,6 @@ const HomeScreen = () => {
       <SearchBar
         term={term}
         onTermChange={handleTermChange}
-        onTermSubmit={() => console.log('Exibindo filtro para:', term)}
       />
       <Products term={term} />
     </View>

@@ -63,6 +63,14 @@ export default {
     borderWidth: 1,
     borderRadius: 4,
   },
+  editDescription: {
+    height: 40,
+    margin: 10,
+    textAlign: 'center',
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 4,
+  },
   saveButton: {
     backgroundColor: 'lightblue',
     padding: 10,
