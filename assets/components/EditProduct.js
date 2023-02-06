@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "react-native-modal";
 import styles from "./css/styles";
 import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
-import { deleteProduct } from "./ConnectAPI";
+import { deleteProduct, editData } from "./ConnectAPI";
 import { useNavigation } from "@react-navigation/native";
 
 const ModalComponent = ({ modalVisible, setModalVisible, selectedProduct }) => {
   const navigation = useNavigation();
+
+  const [nameProd, setNameProd] = useState(
+    selectedProduct ? selectedProduct.name : ""
+  );
+  const [description, setDescription] = useState(
+    selectedProduct ? selectedProduct.description : ""
+  );
+  const [amount, setAmount] = useState(
+    selectedProduct ? selectedProduct.amount : ""
+  );
+
+  useEffect(() => {
+    setNameProd(selectedProduct ? selectedProduct.name : "");
+    setDescription(selectedProduct ? selectedProduct.description : "");
+    setAmount(selectedProduct ? selectedProduct.amount : "");
+  }, [selectedProduct]);
+
+  const productEdited = {
+    name: nameProd,
+    amount: amount,
+    description: description,
+  };
 
   return (
     <Modal
@@ -49,17 +71,34 @@ const ModalComponent = ({ modalVisible, setModalVisible, selectedProduct }) => {
                   }}
                 />
               </View>
-              <Text style={styles.itemInfo}>ID: {selectedProduct.id}</Text>
 
-              <Text style={styles.itemInfo}>{selectedProduct.name}</Text>
-
-              <Text style={styles.itemInfo}>
-                Quantidade: {selectedProduct.amount}
+              <Text style={{ ...styles.itemInfo, marginTop: 10 }}>
+                ID: {selectedProduct.id}
               </Text>
 
-              <Text style={styles.editDescription}>
-                Descrição: {selectedProduct.description}
-              </Text>
+              <TextInput
+                style={styles.itemInfo}
+                onChangeText={(text) => setNameProd(text)}
+              >
+                {selectedProduct.name}
+              </TextInput>
+
+              <TextInput
+                style={styles.itemInfo}
+                keyboardType="numeric"
+                onChangeText={(text) => setAmount(text)}
+              >
+                {selectedProduct.amount}
+              </TextInput>
+
+              <TextInput
+                style={styles.editDescription}
+                onChangeText={(text) => setDescription(text)}
+                multiline
+                numberOfLines={4}
+              >
+                {selectedProduct.description}
+              </TextInput>
 
               <TouchableOpacity
                 onPress={() => {
@@ -87,7 +126,15 @@ const ModalComponent = ({ modalVisible, setModalVisible, selectedProduct }) => {
             <Text style={{ color: "red" }}>Deletar</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setModalVisible(false);
+              navigation.navigate("Estoque");
+
+              editData(selectedProduct.id, productEdited);
+            }}
+            style={{ marginRight: 50 }}
+          >
             <Text>Salvar</Text>
           </TouchableOpacity>
         </View>
