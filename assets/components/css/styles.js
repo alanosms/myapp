@@ -63,6 +63,16 @@ export default {
     borderWidth: 1,
     borderRadius: 4,
   },
+  formContainer: {
+    padding: 20,
+  },
+  inputRegisterProduct: {
+    height: 40,
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: "#ccc",
+  },
   editDescription: {
     height: 40,
     margin: 10,

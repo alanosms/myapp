@@ -3,9 +3,7 @@ import Modal from "react-native-modal";
 import styles from "./css/styles";
 import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
 import { deleteProduct } from "./ConnectAPI";
-import { useNavigation } from '@react-navigation/native';
-
-
+import { useNavigation } from "@react-navigation/native";
 
 const ModalComponent = ({ modalVisible, setModalVisible, selectedProduct }) => {
   const navigation = useNavigation();
@@ -78,16 +76,19 @@ const ModalComponent = ({ modalVisible, setModalVisible, selectedProduct }) => {
             marginHorizontal: 10,
           }}
         >
-           <TouchableOpacity onPress={() => {
-            deleteProduct(selectedProduct.id)
-            setModalVisible(false)
-            navigation.navigate('Estoque');
-            }} style={{ marginRight: 50 }}>
-          <Text style={{ color: "red" }}>Deletar</Text>
+          <TouchableOpacity
+            onPress={() => {
+              deleteProduct(selectedProduct.id);
+              setModalVisible(false);
+              navigation.navigate("Estoque");
+            }}
+            style={{ marginRight: 50 }}
+          >
+            <Text style={{ color: "red" }}>Deletar</Text>
           </TouchableOpacity>
 
           <TouchableOpacity>
-          <Text>Salvar</Text>
+            <Text>Salvar</Text>
           </TouchableOpacity>
         </View>
       </View>
