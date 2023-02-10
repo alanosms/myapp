@@ -29,7 +29,10 @@ export default {
     textAlign: 'center',
     padding: 15,
   },
-
+  camera:{
+    width: 300,
+    height: 300
+  },
   editItem: {
     display: "flex",
     height: 400,
@@ -39,6 +42,13 @@ export default {
   modal: {
     justifyContent: "center",
     alignItems: "center",
+  },
+  containerModal:{
+    flex: 0.5,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 40,
+    borderRadius: 6
   },
   closeButton: {
     position: "absolute",
