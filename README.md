@@ -1,10 +1,9 @@
-## Controle de Estoque
-Este é um aplicativo para controle de estoque construído em React Native. 
-
+# Aplicativo para Controle de Estoque
 <p align="center">
 <img src="https://user-images.githubusercontent.com/50818058/218195361-255e1e0d-30ff-44ce-9ef2-6692867aeab1.png" width="250">
 </p>
 
+Este é um aplicativo para controle de estoque construído em React Native.
 Com ele, é possível gerenciar e monitorar estoques de maneira eficiente, adicionando, visualizando, editando e excluindo itens por meio de requisições HTTP para uma API, que está disponivel aqui:
 [https://github.com/alanosms/myapp-server]
 
