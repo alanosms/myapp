@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-native-modal";
 import styles from "./css/styles";
-import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
+import { View, Text, TouchableOpacity, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Camera, CameraType } from "expo-camera";
 
@@ -27,12 +27,6 @@ const ModalCamera = ({ modalVisible, setModalVisible, handleImage }) => {
       </View>
     );
   }
-
-  const handlePhotoUri = () => {
-    setCapturedPhoto(photo.uri);
-    handleImage(capturedPhoto);
-    setModalVisible(false);
-  };
 
   _takePhoto = async () => {
     const photo = await ref.current.takePictureAsync();
