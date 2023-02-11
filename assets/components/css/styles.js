@@ -5,7 +5,11 @@ export default {
     justifyContent: "space-around",
     paddingBottom: 20,
   },
-
+  textNewProduct:{
+    marginTop: 30,
+    fontSize: 28,
+    textAlign: "center"
+  },
   productImage: {
     width: 120,
     height: 120,
@@ -77,6 +81,12 @@ export default {
     padding: 20,
   },
   inputRegisterProduct: {
+    backgroundColor: "#f8f4fc",
+    shadowColor: '#888888',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.3,
+    borderRadius: 6,
+    textAlign: 'center',
     height: 40,
     marginBottom: 20,
     paddingHorizontal: 10,

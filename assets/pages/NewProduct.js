@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { postProduct } from "../components/ConnectAPI";
-import { View, Button, TextInput, TouchableOpacity, Image } from "react-native";
+import { View, Button, TextInput, TouchableOpacity, Image, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ModalCamera from "../components/ModalCamera";
 
@@ -21,7 +21,6 @@ const NewProduct = () => {
   };
 
   const handleImage = (imageUri) => {
-    console.log("Image URI", imageUri);
     setProduct({ ...product, urlImage: imageUri });
   };
 
@@ -35,6 +34,7 @@ const NewProduct = () => {
 
   return (
     <>
+    <Text style={styles.textNewProduct}>Adicionar Produto</Text>
       <View style={styles.formContainer}>
         <TextInput
           style={styles.inputRegisterProduct}
@@ -66,7 +66,8 @@ const NewProduct = () => {
           <TouchableOpacity
             onPress={handleModalCamera}
             style={{
-              backgroundColor: "gray",
+              backgroundColor: "#ccc",
+              borderRadius: 6,
               alignItems: "center",
               justifyContent: "center",
               height: 40,
