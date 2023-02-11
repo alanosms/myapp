@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Modal from "react-native-modal";
 import styles from "./css/styles";
 import { View, Text, TouchableOpacity, Button } from "react-native";
