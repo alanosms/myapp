@@ -43,7 +43,7 @@ export const Products = ({ term }) => {
       setData(response.data);
       setFilteredData(
         term.length > 0
-          ? response.data.filter((item) => item.name.includes(term))
+          ? response.data.filter((item) => item.name.toLowerCase().includes(term.toLowerCase()))
           : response.data
       );
     } catch (error) {
