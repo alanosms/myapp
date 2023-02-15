@@ -21,7 +21,7 @@ const ModalCamera = ({ modalVisible, setModalVisible, handleImage }) => {
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: "center" }}>
-          We need your permission to show the camera
+        Precisamos da sua permissão para utilizar a câmera
         </Text>
         <Button onPress={requestPermission} title="grant permission" />
       </View>
@@ -62,7 +62,7 @@ const ModalCamera = ({ modalVisible, setModalVisible, handleImage }) => {
             <Camera style={styles.camera} type={type} ref={ref}></Camera>
             <TouchableOpacity onPress={_takePhoto}>
               <Text style={{ textAlign: "center", padding: 30 }}>
-                Snap Photo
+                Tirar Foto
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
